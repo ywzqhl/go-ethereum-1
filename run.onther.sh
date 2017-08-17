@@ -6,12 +6,9 @@ export DATADIR2=$HOME/.onther2
 export DATADIR3=$HOME/.pjh-private
 export DATADIR4=$HOME/.pjh-private2
 
-
-
 # init for 2 geth
 build/bin/geth --datadir=$DATADIR1 init onther.json
 build/bin/geth --datadir=$DATADIR2 init onther.json
-
 
 # run 1st geth
 build/bin/geth --networkid=135976 \
@@ -28,6 +25,10 @@ build/bin/geth --networkid=135976 \
   --cache=512 \
   --port=8546 \
   --shh
+
+# run private geth
+geth init --datadir=~/.ethereum.private pjh-genesis.json
+geth --networkid=123 --datadir=~/.ethereum.private --cache=512 --rpc --pprof
 
 
 # attach
